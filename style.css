@@ -1,0 +1,11 @@
+/* tailwind css file linked */
+@import "tailwindcss";
+
+/* hind maduri font css */
+.hind-madurai {
+  font-family: "Hind Madurai", sans-serif;
+}
+
+.custom-content-between {
+    justify-content: space-between;
+}
