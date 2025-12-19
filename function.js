@@ -1,4 +1,33 @@
-const transctionData =[];
+// call history start
+const callData =[];
+
+function callHistoryFunction(){
+    const callHistory = document.getElementById('call-history-main');
+    callHistory.innerHTML ='';
+    for (const data of callData){
+        const div = document.createElement('div');
+        div.innerHTML = `
+                <div class="flex justify-between items-center mt-1">
+                    <div class="px-4">
+                        <h2>${data.service}</h2>
+                        <p>${data.hotlineNum}</p>
+                    </div>
+                    <div>
+                        <p>${data.time}</p>
+                    </div>
+                </div>
+        `
+        callHistory.appendChild(div);
+    }
+}
+// call history clear button start
+document.getElementById('call-history-clear-btn')
+    .addEventListener('click', function(){
+        const callHistory = document.getElementById('call-history-main');
+        callHistory.innerHTML = '';
+    })
+// call history clear button end
+// call history end
 
 // function for get inner text
 function getInnerText(id){
@@ -51,8 +80,208 @@ document.getElementById('emergency-btn')
             time: new Date().toLocaleTimeString()
         }
 
-        transctionData.push(serviceInformation);
-        console.log(transctionData);
+        callData.push(serviceInformation);
+        callHistoryFunction();
     })
 
+
+        // Police button start
+document.getElementById('police-btn')
+    .addEventListener('click', function(){
+        const availableCoin = getNumberInnerText('available-coin')
+        const police = getInnerText('police');
+        const policeNumber = getInnerText('police-number');
+        if(availableCoin > 19){
+            alert('you are calling in '+police+ ' at '+policeNumber);
+            const currentCoin = availableCoin-20;
+            document.getElementById('available-coin').innerText = currentCoin;
+        }else{
+            alert("You don't have suffecient Coin to call in "+police+ ' at '+policeNumber);
+            return;
+        }
+
+        const serviceInformation ={
+            service: 'police',
+            hotlineNum: 999,
+            time: new Date().toLocaleTimeString()
+        }
+
+        callData.push(serviceInformation);
+        callHistoryFunction();
+    })
+
+        // fire service btn start
+    document.getElementById('fire-service-btn')
+        .addEventListener('click', function(){
+            const availableCoin = getNumberInnerText('available-coin');
+            const fireService = getInnerText('fire-service');
+            const serviceNumber = getInnerText('fire-service-num');
+            
+            if(19<availableCoin){
+                alert('Your are calling in '+fireService+' at '+serviceNumber);
+                const currentCoin = availableCoin-20;
+                document.getElementById('available-coin').innerText = currentCoin;
+            }else{
+                alert("You don't have suffecient Coin to call in "+police+ ' at '+policeNumber);
+                return;
+            }
+
+            const serviceInformation ={
+                service:'Fire Service',
+                hotlineNum: 999,
+                time: new Date().toLocaleTimeString()
+            }
+            callData.push(serviceInformation);
+            callHistoryFunction();
+        })
+
+        // Ambulance btn start
+    document.getElementById('ambulance-btn')
+        .addEventListener('click', function(){
+            const availableCoin = getNumberInnerText('available-coin');
+            const ambulance = getInnerText('ambulance');
+            const serviceNumber = getInnerText('ambulance-num');
+            
+            if(19<availableCoin){
+                alert('Your are calling in '+ambulance+' at '+serviceNumber);
+                const currentCoin = availableCoin-20;
+                document.getElementById('available-coin').innerText = currentCoin;
+            }else{
+                alert("You don't have suffecient Coin to call in "+ambulance+ ' at '+serviceNumber);
+                return;
+            }
+
+            const serviceInformation ={
+                service:'Ambulance',
+                hotlineNum: 1994-999999,
+                time: new Date().toLocaleTimeString()
+            }
+            callData.push(serviceInformation);
+            callHistoryFunction();
+        })
+
+        // Women & Child Helpline button start
+    document.getElementById('women-btn')
+        .addEventListener('click', function(){
+            const availableCoin = getNumberInnerText('available-coin');
+            const serviceName = getInnerText('women');
+            const serviceNumber = getInnerText('women-num');
+            
+            if(19<availableCoin){
+                alert('Your are calling in '+serviceName+' at '+serviceNumber);
+                const currentCoin = availableCoin-20;
+                document.getElementById('available-coin').innerText = currentCoin;
+            }else{
+                alert("You don't have suffecient Coin to call in "+serviceName+ ' at '+serviceNumber);
+                return;
+            }
+
+            const serviceInformation ={
+                service:'Women & Child Helpline',
+                hotlineNum: 109,
+                time: new Date().toLocaleTimeString()
+            }
+            callData.push(serviceInformation);
+            callHistoryFunction();
+        })
+
+        // Anti-Corruption button start
+    document.getElementById('anti-corruption-btn')
+        .addEventListener('click', function(){
+            const availableCoin = getNumberInnerText('available-coin');
+            const serviceName = getInnerText('anti-corruption');
+            const serviceNumber = getInnerText('anti-corruption-number');
+            
+            if(19<availableCoin){
+                alert('Your are calling in '+serviceName+' at '+serviceNumber);
+                const currentCoin = availableCoin-20;
+                document.getElementById('available-coin').innerText = currentCoin;
+            }else{
+                alert("You don't have suffecient Coin to call in "+serviceName+ ' at '+serviceNumber);
+                return;
+            }
+
+            const serviceInformation ={
+                service:'Anti-Corruption',
+                hotlineNum: 106,
+                time: new Date().toLocaleTimeString()
+            }
+            callData.push(serviceInformation);
+            callHistoryFunction();
+        })
+
+        // Electricity btn start
+    document.getElementById('electricity-btn')
+        .addEventListener('click', function(){
+            const availableCoin = getNumberInnerText('available-coin');
+            const serviceName = getInnerText('electricity');
+            const serviceNumber = getInnerText('electricity-number');
+            
+            if(19<availableCoin){
+                alert('Your are calling in '+serviceName+' at '+serviceNumber);
+                const currentCoin = availableCoin-20;
+                document.getElementById('available-coin').innerText = currentCoin;
+            }else{
+                alert("You don't have suffecient Coin to call in "+serviceName+ ' at '+serviceNumber);
+                return;
+            }
+
+            const serviceInformation ={
+                service:'Electricity Outage',
+                hotlineNum: 16216,
+                time: new Date().toLocaleTimeString()
+            }
+            callData.push(serviceInformation);
+            callHistoryFunction();
+        })
+
+        // Brac btn 
+    document.getElementById('brac-btn')
+        .addEventListener('click', function(){
+            const availableCoin = getNumberInnerText('available-coin');
+            const serviceName = getInnerText('brac');
+            const serviceNumber = getInnerText('brac-number');
+            
+            if(19<availableCoin){
+                alert('Your are calling in '+serviceName+' at '+serviceNumber);
+                const currentCoin = availableCoin-20;
+                document.getElementById('available-coin').innerText = currentCoin;
+            }else{
+                alert("You don't have suffecient Coin to call in "+serviceName+ ' at '+serviceNumber);
+                return;
+            }
+
+            const serviceInformation ={
+                service:'Brac',
+                hotlineNum: 16445,
+                time: new Date().toLocaleTimeString()
+            }
+            callData.push(serviceInformation);
+            callHistoryFunction();
+        })
+
+        // Bangladesh Railway btn
+    document.getElementById('railway-btn')
+        .addEventListener('click', function(){
+            const availableCoin = getNumberInnerText('available-coin');
+            const serviceName = getInnerText('railway');
+            const serviceNumber = getInnerText('railway-number');
+            
+            if(19<availableCoin){
+                alert('Your are calling in '+serviceName+' at '+serviceNumber);
+                const currentCoin = availableCoin-20;
+                document.getElementById('available-coin').innerText = currentCoin;
+            }else{
+                alert("You don't have suffecient Coin to call in "+serviceName+ ' at '+serviceNumber);
+                return;
+            }
+
+            const serviceInformation ={
+                service:'Bangladesh Railway',
+                hotlineNum: 163,
+                time: new Date().toLocaleTimeString()
+            }
+            callData.push(serviceInformation);
+            callHistoryFunction();
+        })
 // call functionality end
