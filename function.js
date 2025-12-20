@@ -285,3 +285,28 @@ document.getElementById('police-btn')
             callHistoryFunction();
         })
 // call functionality end
+
+// copy button functionality start
+    const copyCounters = document.querySelectorAll('.copy-counter');
+    let availableCopy = parseInt(document.getElementById('available-copy').innerText);
+
+    for (const counter of copyCounters) {
+        counter.addEventListener('click', function () {
+            const cardBox = this.closest('.card-box');
+            const serviceNumber = cardBox.querySelector('.service-name').innerText;
+            const hotlineNumber = cardBox.querySelector('.hotline-number').innerText;
+
+            navigator.clipboard.writeText(hotlineNumber)
+                .then(() => {
+                    alert('you are copied the hotline number of ' + serviceNumber);
+
+                    availableCopy++;
+                    document.getElementById('available-copy').innerText = availableCopy;
+                })
+                .catch(err => {
+                    console.error('Failed to  the copied the number of ', serviceNumber);
+                });
+        });
+    }
+
+// copy button functionality end
